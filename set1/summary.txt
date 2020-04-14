@@ -1,0 +1,22 @@
+Cryptopals challenges were interesting. All of the first five challenges built up for a far more difficult problem in challenge six, which used pretty much all of the previous code.
+In the first exercise, I learned how to work with bytes and hex strings, converting a hex string into base64.
+In the second exercise, I learned about xor'ing, producing the xor combination of 2 equal length strings.
+The third exercise is where it gets interesting. Using data from a wikipedia article on letter frequencies, I used brute force in order to decrypt a hex encoded string, which was xor'd by a single unknown character. I used a letter frequency dictionary and xor'd the encoded string with all ascii values, and checked which one had the top score based off the english letter frequencies. It turns out the original string was encoded against 'X'.
+My terminal output from my code was:
+message: b"Cooking MC's like a pound of bacon"
+score: 1.6632900000000002
+key: 88
+In the 4th exercise, I had to figure out which line in a 60-line file was encrypted by a single-character xor. The code from the previous exercise was really helpful for this.
+I used the similar brute force method, xoring all lines with all ascii combinations, and finding which line had the top score based off english letter frequencies. My terminal output was:
+message: b'Now that the party is jumping\n'
+score: 1.6347900000000002
+key: 53
+I think this shows the use of code as well as some security techniques, such as brute force. Trying to do this by hand would be insane, and hear I've utilised data collected by other people in order to computationally solve the task in less than a second.
+In the 5th exercise, I implemented a repeating-key xor. Nothing too hard.
+Finally the 6th exercise.
+
+A file was base64'd after being encrypted with repeating-key XOR.
+
+I needed to decrypt it.
+
+It was pretty complicated and I had to debug a lot of bugs. But I managed to break repeating-key XOR, which is a vigenere cipher. I utilised all of the tools I made in previous exercises. Through the exercise I learned about hamming distance and the use of data such as letter frequencies to predict encrypted texts.
